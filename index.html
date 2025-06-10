@@ -1,0 +1,89 @@
+ <!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Цикли Сну</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      text-align: center;
+      padding: 2em;
+    }
+    input, button {
+      padding: 0.5em;
+      font-size: 1em;
+      margin: 0.5em;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      background: #3c3c3c;
+      color: white;
+      cursor: pointer;
+    }
+    .times {
+      margin-top: 1em;
+    }
+    .time-block {
+      margin-bottom: 0.8em;
+    }
+    footer {
+      margin-top: 2em;
+      font-size: 0.8em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>⏰ Коли прокидатись?</h1>
+  <p>Вкажи час засинання:</p>
+  <input type="time" id="sleepTime">
+  <button onclick="calculate()">Розрахувати</button>
+  <button onclick="setNow()">Зараз</button>
+
+  <div class="times" id="results"></div>
+
+  <footer>
+    &copy; chrnvshk, 2025 — MIT License
+  </footer>
+
+  <script>
+    function calculate() {
+      const input = document.getElementById("sleepTime").value;
+      if (!input) return;
+      const [h, m] = input.split(":").map(Number);
+      const base = new Date();
+      base.setHours(h, m, 0);
+
+      const results = document.getElementById("results");
+      results.innerHTML = "";
+
+      for (let i = 3; i <= 6; i++) {
+        const wakeTime = new Date(base.getTime() + i * 90 * 60000);
+        const hours = wakeTime.getHours().toString().padStart(2, "0");
+        const minutes = wakeTime.getMinutes().toString().padStart(2, "0");
+        const hoursSlept = ((i * 90) / 60).toFixed(1);
+
+        results.innerHTML += `
+          <div class="time-block">
+            <strong>${i} цикли:</strong> прокинутись о <strong>${hours}:${minutes}</strong> <br>
+            (${hoursSlept} год сну)
+          </div>
+        `;
+      }
+    }
+
+    function setNow() {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2, '0');
+      const m = now.getMinutes().toString().padStart(2, '0');
+      document.getElementById("sleepTime").value = `${h}:${m}`;
+    }
+  </script>
+</body>
+</html>

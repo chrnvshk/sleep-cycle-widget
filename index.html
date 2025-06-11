@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
@@ -6,37 +6,65 @@
   <title>Цикли Сну</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --accent: #82FF92;
+      --bg: #12101A;
+    }
+
     body {
-      font-family: gilroy;
-      font-family: sans-sef;
-      background: #121212;
+      font-family: 'Unbounded', sans-serif;
+      background: var(--bg);
       color: #f0f0f0;
       text-align: center;
       padding: 2em;
     }
+
     input, button {
-      padding: 0.5em;
+      padding: 0.6em 1em;
       font-size: 1em;
       margin: 0.5em;
-      border-radius: 6px;
+      border-radius: 8px;
       border: none;
+      font-family: 'Unbounded', sans-serif;
     }
+
+    input {
+      background: #1e1e1e;
+      color: #f0f0f0;
+    }
+
     button {
-      background: #3c3c3c;
-      color: white;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: bold;
       cursor: pointer;
+      transition: transform 0.2s ease;
     }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
     .times {
-      margin-top: 1em;
+      margin-top: 1.5em;
     }
+
     .time-block {
-      margin-bottom: 0.8em;
+      margin-bottom: 1em;
     }
+
     footer {
-      margin-top: 2em;
+      margin-top: 3em;
       font-size: 0.8em;
       color: #888;
+    }
+
+    footer img {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 6px;
     }
   </style>
 </head>
@@ -44,16 +72,23 @@
   <h1>⏰ Коли прокидатись?</h1>
   <p>Вкажи час засинання:</p>
   <input type="time" id="sleepTime">
+  <br>
   <button onclick="calculate()">Розрахувати</button>
   <button onclick="setNow()">Зараз вже</button>
 
   <div class="times" id="results"></div>
 
   <footer>
-    &copy; chrnvshk, 2025 — MIT License
+    <img src="121.png" alt="smile"> &copy; chrnvshk, 2025 — MIT License
   </footer>
 
   <script>
+    function pluralizeCycles(n) {
+      if (n === 1) return 'цикл';
+      if (n >= 2 && n <= 4) return 'цикли';
+      return 'циклів';
+    }
+
     function calculate() {
       const input = document.getElementById("sleepTime").value;
       if (!input) return;
@@ -72,7 +107,7 @@
 
         results.innerHTML += `
           <div class="time-block">
-            <strong>${i} ${pluralizeCycles(i)}:</strong> прокинутись о <strong>${hours}:${minutes}</strong> <br>
+            <strong>${i} ${pluralizeCycles(i)}:</strong> прокинутись о <strong>${hours}:${minutes}</strong><br>
             (${hoursSlept} год сну)
           </div>
         `;

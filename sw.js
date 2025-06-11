@@ -1,11 +1,12 @@
-const CACHE_NAME = 'sleep-widget-v1';
+const CACHE_NAME = 'sleep-widget-cache-v1';
 const FILES_TO_CACHE = [
   '/',
-  '/index.html',
-  '/manifest.json',
-  '/133.png'
+  '/sleep-cycle-widget/index.html',
+  '/sleep-cycle-widget/manifest.json',
+  '/sleep-cycle-widget/133.png',
 ];
 
+// Встановлення service worker і кешування
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -15,6 +16,7 @@ self.addEventListener('install', (e) => {
   self.skipWaiting();
 });
 
+// Очищення старих кешів при активації
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((keyList) =>
@@ -30,6 +32,7 @@ self.addEventListener('activate', (e) => {
   self.clients.claim();
 });
 
+// Обробка fetch-запитів
 self.addEventListener('fetch', (e) => {
   e.respondWith(
     caches.match(e.request).then((response) => {

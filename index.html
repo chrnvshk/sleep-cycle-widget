@@ -4,25 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Цикли Сну</title>
+
+  <!-- PWA + Icons -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon-512.png" type="image/png">
-  <link rel="apple-touch-icon" href="icon-512.png" />
+  <link rel="shortcut icon" href="icon-512.png" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon-512.png">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#82FF92">
-  <link rel="shortcut icon" href="icon-512.png" type="image/png">
-  <link rel="apple-touch-icon" sizes="180x180" href="icon-512.png">
 
   <!-- META PREVIEW -->
+  <meta name="description" content="Іронічний віджет для пробудження у найкращий момент циклу сну. Прокидайся з кайфом, навіть якщо спиш 3 цикли." />
   <meta property="og:title" content="Sleep Cycle Widget — коли прокидатись?" />
   <meta property="og:description" content="Іронічний віджет, який допоможе проспати з повагою. Вводь час — отримуй ідеальні моменти для пробудження." />
   <meta property="og:image" content="https://chrnvshk.github.io/sleep-cycle-widget/clock.png" />
   <meta property="og:url" content="https://chrnvshk.github.io/sleep-cycle-widget/" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Unbounded from Google Fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet" />
 
+  <!-- Styles -->
   <style>
     body {
       font-family: 'Unbounded', sans-serif;
@@ -67,10 +70,11 @@
     }
   </style>
 
+  <!-- Register service worker -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js');
+        navigator.serviceWorker.register('./sw.js');
       });
     }
   </script>
@@ -85,12 +89,12 @@
 
   <div class="times" id="results"></div>
 
- <footer>
-  <img src="133.png" alt="icon" width="23" height="23" style="vertical-align: middle; margin-right: 8px;">
-  &copy; chrnvshk, 2025 — MIT License
-</footer>
+  <footer>
+    <img src="133.png" alt="icon" width="23" height="23" style="vertical-align: middle; margin-right: 8px;">
+    &copy; chrnvshk, 2025 — MIT License
+  </footer>
 
-
+  <!-- Scripts -->
   <script>
     function calculate() {
       const input = document.getElementById("sleepTime").value;

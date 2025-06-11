@@ -8,7 +8,7 @@
   <link rel="icon" href="favicon.png" type="image/png">
   <style>
     body {
-      font-family: sans-serif;
+      font-family: unbounded;
       background: #121212;
       color: #f0f0f0;
       text-align: center;
@@ -44,7 +44,7 @@
   <p>Вкажи час засинання:</p>
   <input type="time" id="sleepTime">
   <button onclick="calculate()">Розрахувати</button>
-  <button onclick="setNow()">Зараз</button>
+  <button onclick="setNow()">вже сплю</button>
 
   <div class="times" id="results"></div>
 
@@ -71,7 +71,7 @@
 
         results.innerHTML += `
           <div class="time-block">
-            <strong>${i} цикли:</strong> прокинутись о <strong>${hours}:${minutes}</strong> <br>
+            <strong>${i} ${pluralizeCycles(i)}:</strong> прокинутись о <strong>${hours}:${minutes}</strong> <br>
             (${hoursSlept} год сну)
           </div>
         `;

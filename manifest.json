@@ -2,7 +2,7 @@
   "name": "Sleep Cycle Widget",
   "short_name": "Sleep",
   "description": "Віджет циклів сну",
-  "start_url": "/index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#12101A",
   "theme_color": "#82FF92",
@@ -10,8 +10,7 @@
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }

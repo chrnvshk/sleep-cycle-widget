@@ -3,7 +3,7 @@
   "short_name": "Sleep",
   "description": "Віджет циклів сну",
   "start_url": "/sleep-cycle-widget/",
-  "scope": "/sleep-cycle-widget/"
+  "scope": "/sleep-cycle-widget/",
   "display": "standalone",
   "background_color": "#12101A",
   "theme_color": "#82FF92",
@@ -15,3 +15,11 @@
     }
   ]
 }
+"screenshots": [
+  {
+    "src": "splash.png",
+    "sizes": "1280x720",
+    "type": "image/png",
+    "form_factor": "wide"
+  }
+]
